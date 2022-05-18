@@ -56,10 +56,9 @@ for (const file of eventFiles) {
     }
 }
 
-
 // status --->
 
-client.user.setActivity("Jogando Digimon Master Online");
+// client.user.setActivity("Jogando Digimon Master Online");
 
 //fazer o bot logar --->
 client.login(process.env.TOKEN);
