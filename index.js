@@ -10,15 +10,16 @@ dotenv.config();
 //criar um novo cliente --->
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 
-//debug --->
-client.once('ready', () => {
-    console.log('Estou online');
-});
-
 client.commands = new Collection();
+
+const eventsPath = path.join(__dirname, 'events');
+const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'));
 
 const commandsPath = path.join(__dirname, 'commands');
 const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
+
+
+// responder mensagens --->
 
 for(const file of commandFiles) {
 
@@ -43,6 +44,22 @@ client.on('interactionCreate', async interaction => {
 		await interaction.reply({ content: 'Erro ao executar o commando!', ephemeral: true });
 	}
 });
+
+//events --->
+
+for (const file of eventFiles) {
+    const filePath = path.join(eventsPath, file);
+    const event = require(filePath);
+
+    if(event.once) {
+        client.once(event.name, (...args) => event.execute(...args));
+    }
+}
+
+
+// status --->
+
+client.user.setActivity("Jogando Digimon Master Online");
 
 //fazer o bot logar --->
 client.login(process.env.TOKEN);
