@@ -1,11 +1,16 @@
-// chamadas do discord.js --->
 const { Client, Intents, Collection } = require("discord.js");
 const { config } = require("./config.json");
 const dotenv = require('dotenv');
 const fs = require('node:fs');
 const path = require('node:path');
 
+import prefix from "./config.json";
+
 dotenv.config();
+
+//prefix --->
+
+const prefix = prefix;
 
 //criar um novo cliente --->
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
@@ -43,6 +48,10 @@ client.on('interactionCreate', async interaction => {
 		console.error(error);
 		await interaction.reply({ content: 'Erro ao executar o commando!', ephemeral: true });
 	}
+});
+
+client.on('message', message => {
+	if(!message.const.start)
 });
 
 //events --->

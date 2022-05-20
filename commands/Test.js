@@ -4,16 +4,16 @@ const { Client, Intents } = require("discord.js");
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 const channel = client.channels.cache.get('975424523455332442');
 
-const exampleEmbed = {
+const exampleEmbed = [{
 	color: 0x0099ff,
-	title: 'Some title',
+	title: 'sdfsdffdsffdfddfs',
 	url: 'https://discord.js.org',
 	author: {
 		name: 'Some name',
 		icon_url: 'https://i.imgur.com/AfFp7pu.png',
 		url: 'https://discord.js.org',
 	},
-	description: 'Some description here',
+	description: 'dsffdsfsdfsdfdfdsfd',
 	thumbnail: {
 		url: 'https://i.imgur.com/AfFp7pu.png',
 	},
@@ -51,7 +51,7 @@ const exampleEmbed = {
 		text: 'Some footer text here',
 		icon_url: 'https://i.imgur.com/AfFp7pu.png',
 	},
-};
+}];
 
 client.on('message',message => {
 
