@@ -10,7 +10,7 @@ module.exports = {
 
 		let embed = new MessageEmbed()
 			.setColor('#581845')
-			.setDescription('->> just a test <<--');
+			.setDescription('-->> just a test <<--');
 
 		await interaction.reply({embeds: [embed]});
 	},

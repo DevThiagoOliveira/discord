@@ -54,8 +54,9 @@ for (const file of eventFiles) {
 }
 
 // status --->
-
-// client.user.setActivity("Jogando Digimon Master Online");
-
+client.on("ready", () => {
+	client.user.setActivity('!help', { type: 'LISTENING' });
+	client.user.setStatus('idle');
+});
 //fazer o bot logar --->
 client.login(process.env.TOKEN);
