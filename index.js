@@ -4,13 +4,7 @@ const dotenv = require('dotenv');
 const fs = require('node:fs');
 const path = require('node:path');
 
-import prefix from "./config.json";
-
 dotenv.config();
-
-//prefix --->
-
-const prefix = prefix;
 
 //criar um novo cliente --->
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
@@ -23,7 +17,6 @@ const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'
 const commandsPath = path.join(__dirname, 'commands');
 const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
 
-
 // responder mensagens --->
 
 for(const file of commandFiles) {
@@ -33,7 +26,6 @@ for(const file of commandFiles) {
 
     client.commands.set(command.data.name, command);
 }
-
 
 client.on('interactionCreate', async interaction => {
 	if (!interaction.isCommand()) return;
@@ -48,10 +40,6 @@ client.on('interactionCreate', async interaction => {
 		console.error(error);
 		await interaction.reply({ content: 'Erro ao executar o commando!', ephemeral: true });
 	}
-});
-
-client.on('message', message => {
-	if(!message.const.start)
 });
 
 //events --->
